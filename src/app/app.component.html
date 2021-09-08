@@ -1,18 +1,9 @@
-<table class="table table-striped" *ngIf="listings">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Tags</th>
-      <th scope="col">Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let listing of listings.results; let idx = index">
-      <th scope="row">{{idx + 1}}</th>
-      <td>{{listing.name}}</td>
-      <td>{{listing.tags}}</td>
-      <td>{{listing.price}}</td>
-    </tr>
-  </tbody>
-</table>
+<nav class="navbar navbar-dark bg-dark mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">ICReUse</a>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>

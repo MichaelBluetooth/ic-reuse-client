@@ -1,0 +1,18 @@
+<table class="table table-striped" *ngIf="listings">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Tags</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let listing of listings.results; let idx = index">
+      <th scope="row">{{idx + 1}}</th>
+      <td><a [routerLink]="['listings', listing.id]">{{listing.name}}</a></td>
+      <td>{{listing.tags}}</td>
+      <td>{{listing.price}}</td>
+    </tr>
+  </tbody>
+</table>
