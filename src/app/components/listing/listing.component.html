@@ -1,23 +1,23 @@
 <div class="container" *ngIf="listing">
   <div class="row">
     <div class="col-md-4">
-      <img [src]="'https://reuseventory.herokuapp.com/api/listingimages/' + listing.id" style="width:100%">
+      <img [src]="listing.id | toListingImage" style="width:100%">
     </div>
 
     <div class="col-md-8">
       <div class="d-flex justify-content-between">
         <div>
-          <h1>{{listing.name}}</h1>
+          <h1 id="listingName">{{listing.name}}</h1>
         </div>
         <div>
-          <h1>${{listing.price}}</h1>
+          <h1 id="listingPrice">{{listing.price | price}}</h1>
         </div>
       </div>
       <div>
         <span class="badge bg-primary me-2" *ngFor="let tag of listing.tags">{{tag}}</span>
       </div>
       <div>
-        <p>{{listing.description}}</p>
+        <p id="listingDescription">{{listing.description}}</p>
       </div>
     </div>
 

@@ -9,10 +9,12 @@
   </thead>
   <tbody>
     <tr *ngFor="let listing of listings.results; let idx = index">
-      <th scope="row">{{idx + 1}}</th>
-      <td><a [routerLink]="['listings', listing.id]">{{listing.name}}</a></td>
-      <td>{{listing.tags}}</td>
-      <td>{{listing.price}}</td>
+      <td scope="row">{{ idx + 1 }}</td>
+      <td>
+        <a [routerLink]="['listings', listing.id]">{{ listing.name }}</a>
+      </td>
+      <td>{{ listing.tags }}</td>
+      <td>{{ listing.price | price }}</td>
     </tr>
   </tbody>
 </table>

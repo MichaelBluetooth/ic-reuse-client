@@ -6,12 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListingsComponent } from './components/listings/listings.component';
 import { ListingComponent } from './components/listing/listing.component';
+import { ToListingImagePipe } from './pipes/to-listing-image/to-listing-image.pipe';
+import { PricePipe } from './pipes/price/price.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListingsComponent,
-    ListingComponent
+    ListingComponent,
+    ToListingImagePipe,
+    PricePipe
   ],
   imports: [
     BrowserModule,
