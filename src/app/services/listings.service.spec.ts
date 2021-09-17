@@ -27,5 +27,6 @@ describe('ListingsService', () => {
     /**
      * Write a test that asserts the HTTP client is called with the expected URL
      */
+    expect(true).toBe(false);
   });
 });
