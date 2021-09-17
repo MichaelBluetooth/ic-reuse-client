@@ -1,8 +1,9 @@
 import { PricePipe } from './price.pipe';
 
 describe('PricePipe', () => {
-  it('create an instance', () => {
-    const pipe = new PricePipe();
-    expect(pipe.transform(10.24542)).toEqual('$10.25');
-  });
+  const pipe = new PricePipe();
+
+  /**
+   * Write a test that asserts the pipe properly transforms the given number into the expected price string
+   */
 });

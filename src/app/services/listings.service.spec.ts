@@ -24,10 +24,8 @@ describe('ListingsService', () => {
   });
 
   it('should execute the expected API when getting a specific listing resource', () => {
-    const mockResult = {id: 'test_id'};
-    mockHttp.get.and.returnValue(of(mockResult));
-    service.getListing(mockResult.id).subscribe(() => {
-      expect(mockHttp.get).toHaveBeenCalledWith(environment.baseUrl + 'listings/' + mockResult.id);
-    });
+    /**
+     * Write a test that asserts the HTTP client is called with the expected URL
+     */
   });
 });
