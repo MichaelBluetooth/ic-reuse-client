@@ -8,6 +8,8 @@ import { ListingsComponent } from './components/listings/listings.component';
 import { ListingComponent } from './components/listing/listing.component';
 import { ToListingImagePipe } from './pipes/to-listing-image/to-listing-image.pipe';
 import { PricePipe } from './pipes/price/price.pipe';
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,11 +17,14 @@ import { PricePipe } from './pipes/price/price.pipe';
     ListingsComponent,
     ListingComponent,
     ToListingImagePipe,
-    PricePipe
+    PricePipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],
