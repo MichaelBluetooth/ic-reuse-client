@@ -9,8 +9,8 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
-  private AUTH_DETAILS_KEY = 'ic-resuse_auth_details';
+export class AuthService {  
+  AUTH_DETAILS_KEY: string = 'ic-resuse_auth_details';
   loggedIn$ = new BehaviorSubject<boolean>(false);
   loginDetails$ = new Subject<LoginDetails | null>();
 
@@ -45,7 +45,9 @@ export class AuthService {
     localStorage.removeItem(this.AUTH_DETAILS_KEY);
     this.loggedIn$.next(false);
     this.loginDetails$.next(null);
-    this.http.post('users/logout', {}).subscribe((_) => {});
+    this.http.post('users/logout', {}).subscribe(() => {
+      this.router.navigate(['']);
+    });
   }
 
   decodeToken(token: string): any {

@@ -1,8 +1,6 @@
-<nav class="navbar navbar-dark bg-primary mb-4">
+<nav class="navbar navbar-dark bg-dark mb-4">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="assets/logo-clear.png" height="75px" />
-    </a>
+    <a class="navbar-brand" href="#"> IC Reuse </a>
     <ng-container *ngIf="username$ | async as username; else loginBtn">
       <div>
         <span class="navbar-text me-2">{{ username }}</span>
