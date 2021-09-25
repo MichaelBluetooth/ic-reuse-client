@@ -9,9 +9,11 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {  
+export class AuthService {
   AUTH_DETAILS_KEY: string = 'ic-resuse_auth_details';
-  loggedIn$ = new BehaviorSubject<boolean>(false);
+
+  //Create an observable to track the login details and share them with any components that may need it
+  //Unlike a "BehaviorSubject", a "Subject" does not require an initial value.
   loginDetails$ = new Subject<LoginDetails | null>();
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -20,36 +22,48 @@ export class AuthService {
     this.http
       .post<LoginResponse>(environment.baseUrl + 'users/login', { username, password })
       .subscribe((resp: LoginResponse) => {
+        //The access token in the response will be a Base64 encoded object.
+        //Decode it to get any claims or other details
         const decoded: any = this.decodeToken(resp.accessToken);
 
+        //Create an object to store relavent details
         const loginDetails: LoginDetails = {
-          username: resp.username,
-          expires: decoded.exp,
-          accessToken: resp.accessToken,
-          refreshToken: resp.refreshToken,
+          username: resp.username,         //The current users name
+          expires: decoded.exp,            //The expiration date of the token will be
+          accessToken: resp.accessToken,   //The access token needed to make requests against protected resources
+          refreshToken: resp.refreshToken, //The token used to obtain a new access token when it expires
         };
 
+        //Persist the detail in local storage, which allows other tabs to access it
+        //We'll want to load this on app startup to check whether the user is logged
+        //  in, for example if they open a new tab.
         localStorage.setItem(
           this.AUTH_DETAILS_KEY,
           JSON.stringify(loginDetails)
         );
 
-        this.loggedIn$.next(true);
+        //Emit the details to anyone listening
         this.loginDetails$.next(loginDetails);
 
+        //Navigate the user to the home page
         this.router.navigate(['']);
       });
   }
 
   logout(): void {
+    //Clear local storage and alert anyone listening that we're logged out
     localStorage.removeItem(this.AUTH_DETAILS_KEY);
-    this.loggedIn$.next(false);
     this.loginDetails$.next(null);
+    
+    //Tell the server we're logging out and navigate to the homepage
     this.http.post('users/logout', {}).subscribe(() => {
       this.router.navigate(['']);
     });
   }
 
+  /*
+   * Helper function used to decode our JWT
+   */  
   decodeToken(token: string): any {
     //https://stackoverflow.com/a/38552302/821918
     var base64Url = token.split('.')[1];

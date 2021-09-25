@@ -34,6 +34,7 @@ describe('LoginComponent', () => {
     const username = 'test_username';
     const password = 'test_password';
 
+    //Find the username/password inputs and set a value
     const usernameField = fixture.debugElement.query(By.css('#username')).nativeElement;
     const passwordField = fixture.debugElement.query(By.css('#password')).nativeElement;
     usernameField.value = username;
@@ -41,7 +42,10 @@ describe('LoginComponent', () => {
     passwordField.value = password;
     passwordField.dispatchEvent(new Event('input'));
 
+    //Find and click the submit button
     fixture.debugElement.query(By.css('#loginBtn')).nativeElement.click();
+
+    //Assert we logged in, using our mocked service    
     expect(mockAuthService.login).toHaveBeenCalledWith(username, password);
   });
 });

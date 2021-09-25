@@ -10,6 +10,11 @@ import { AuthService } from './services/auth/auth.service';
   styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
+  //Listen for any changes to the login details.
+  //When we get some details, extract the "username"
+  //
+  //Note that this is actually just another observable
+  //  that's used in the template
   username$: Observable<string | null> = this.auth.loginDetails$.pipe(
     map((details) => (details ? details.username : null))
   );

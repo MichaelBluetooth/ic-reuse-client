@@ -38,7 +38,13 @@ describe('AuthService', () => {
       username: testUserName,
     };
 
-    beforeEach(() => {
+    //Before each test, we:
+    //  1) Mock the "decodeToken()" function since we're not testing with a real JWT
+    //  2) Mock the "users/login" POST
+    //  3) Perform the login
+    //
+    //This helps reduce any duplication of code, since each test needs to do the same thing
+    beforeEach(() => {      
       spyOn(service, 'decodeToken').and.returnValue(mockDecodedJWT);
       mockHttp.post.and.returnValue(of(mockLoginResponse));
       service.login(testUserName, testPassword);
@@ -54,13 +60,7 @@ describe('AuthService', () => {
       expect(authDetails.refreshToken).toEqual(mockLoginResponse.refreshToken);
       expect(authDetails.username).toEqual(mockLoginResponse.username);
       expect(authDetails.expires).toEqual(mockDecodedJWT.exp);
-    });    
-
-    it('emits the login status', () => {
-      service.loggedIn$.subscribe(isLoggedIn => {
-        expect(isLoggedIn).toBeTruthy();
-      });
-    });
+    });        
   });
 
   describe('Logging out', () => {
@@ -71,12 +71,6 @@ describe('AuthService', () => {
 
     it('navigates the user to the home page', () => {
       expect(mockRouter.navigate).toHaveBeenCalledWith(['']);
-    });
-
-    it('emits the login status', () => {
-      service.loggedIn$.subscribe(isLoggedIn => {
-        expect(isLoggedIn).toBeFalse();
-      });
     });
   });
 });

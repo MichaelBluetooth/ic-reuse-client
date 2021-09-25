@@ -1,8 +1,16 @@
 <div class="d-flex justify-content-center">
   <div>
     <img src="assets/logo-clear.png" height="250px" />
+    <!-- Bind this form to our FormGroup, created in the Component         
+         When the form is submitted, execute our login() function.
+         
+         We use (ngSubmit) on the form, instead of (click) on the submit button
+         because we'd like the form to be submitted when the user hits the "enter"
+         key, or clicks the button. (ngSubmit) handles both for us.
+     -->
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <div class="form-floating">
+        <!-- pass the string "username" into the "formControlName" input, binding the "username" control to this input -->
         <input
           id="username"
           type="text"
@@ -13,6 +21,7 @@
         <label for="username">Username</label>
       </div>
       <div class="form-floating">
+        <!-- pass the string "password" into the "formControlName" input, binding the "password" control to this input -->
         <input
           id="password"
           type="password"
@@ -27,6 +36,7 @@
       </button>
 
       <div class="d-flex justify-content-center">
+        <!-- We'll do this another day! -->
         <a class="btn btn-link">Register</a>
       </div>
     </form>

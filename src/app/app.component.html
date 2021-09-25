@@ -1,6 +1,15 @@
 <nav class="navbar navbar-dark bg-dark mb-4">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"> IC Reuse </a>
+    <!-- Using angulars "async" pipe, we can subscribe to observables in our template
+         In this case, we're subscribing to this components "username$" observable,
+         and calling the output "username". We then display anything inside the "<ng-container>"
+         element.
+
+         The "else" condition here handles the case where "username" is null. 
+         When "username" is null, instead of rendering anything inside this "<ng-container>"
+         element, we render the element labelled as "loginBtn" (defined elsewhere)
+     -->
     <ng-container *ngIf="username$ | async as username; else loginBtn">
       <div>
         <span class="navbar-text me-2">{{ username }}</span>
@@ -14,6 +23,7 @@
   <router-outlet></router-outlet>
 </div>
 
+<!-- This part of the template will only be rendered conditionally! Note how our content is inside an "<ng-template>" element -->
 <ng-template #loginBtn>
   <a class="btn btn-outline-primary" [routerLink]="['login']">Login</a>
 </ng-template>
