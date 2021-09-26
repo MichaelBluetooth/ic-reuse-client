@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { LoginDetails } from 'src/app/models/login-details';
 import { LoginResponse } from 'src/app/models/login-response';
 import { environment } from 'src/environments/environment';
@@ -20,7 +20,10 @@ export class AuthService {
 
   login(username: string, password: string): void {
     this.http
-      .post<LoginResponse>(environment.baseUrl + 'users/login', { username, password })
+      .post<LoginResponse>(environment.baseUrl + 'users/login', {
+        username,
+        password,
+      })
       .subscribe((resp: LoginResponse) => {
         //The access token in the response will be a Base64 encoded object.
         //Decode it to get any claims or other details
@@ -28,9 +31,9 @@ export class AuthService {
 
         //Create an object to store relavent details
         const loginDetails: LoginDetails = {
-          username: resp.username,         //The current users name
-          expires: decoded.exp,            //The expiration date of the token will be
-          accessToken: resp.accessToken,   //The access token needed to make requests against protected resources
+          username: resp.username, //The current users name
+          expires: decoded.exp, //The expiration date of the token will be
+          accessToken: resp.accessToken, //The access token needed to make requests against protected resources
           refreshToken: resp.refreshToken, //The token used to obtain a new access token when it expires
         };
 
@@ -54,16 +57,21 @@ export class AuthService {
     //Clear local storage and alert anyone listening that we're logged out
     localStorage.removeItem(this.AUTH_DETAILS_KEY);
     this.loginDetails$.next(null);
-    
+
     //Tell the server we're logging out and navigate to the homepage
     this.http.post('users/logout', {}).subscribe(() => {
       this.router.navigate(['']);
     });
   }
 
+  getAccessToken(): string | null {
+    const details = localStorage[this.AUTH_DETAILS_KEY];
+    return details ? JSON.parse(details).accessToken : null;
+  }
+
   /*
    * Helper function used to decode our JWT
-   */  
+   */
   decodeToken(token: string): any {
     //https://stackoverflow.com/a/38552302/821918
     var base64Url = token.split('.')[1];

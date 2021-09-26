@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,8 @@ import { ToListingImagePipe } from './pipes/to-listing-image/to-listing-image.pi
 import { PricePipe } from './pipes/price/price.pipe';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddListingComponent } from './components/add-listing/add-listing.component';
+import { AccessTokenInterceptor } from './services/access-token-interceptor/access-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -18,16 +20,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ListingComponent,
     ToListingImagePipe,
     PricePipe,
-    LoginComponent
+    LoginComponent,
+    AddListingComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,    
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AccessTokenInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

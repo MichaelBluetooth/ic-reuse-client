@@ -1,0 +1,67 @@
+<div class="container">
+  <h1>Add Listing</h1>
+  <form [formGroup]="listingForm" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="name"
+      />
+      <div id="nameHelp" class="form-text">Enter the name of your listing.</div>
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input
+        type="number"
+        class="form-control"
+        id="price"
+        formControlName="price"
+      />
+      <div id="priceHelp" class="form-text">
+        The asking price of your listing. Leave this blank if free!
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        id="description"
+        class="form-control"
+        rows="5"
+        formControlName="description"
+      ></textarea>
+      <div id="descriptionHelp" class="form-text">
+        Provide a description of your listing. Good things to consider including
+        are the make/model or number of years used.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="tags" class="form-label">Tags</label>
+      <input
+        type="text"
+        class="form-control"
+        id="tags"
+        formControlName="tags"
+      />
+      <div id="tagsHelp" class="form-text">
+        Enter any keywords associated with your listing to help users search for
+        it. Use a comma to seperate each tag.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">Image</label>
+      <input
+        #fileInput
+        type="file"
+        class="form-control"
+        id="image"
+        formControlName="image"
+      />
+      <div id="imageHelp" class="form-text">
+        Include an image of your listing
+      </div>
+    </div>
+    <button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

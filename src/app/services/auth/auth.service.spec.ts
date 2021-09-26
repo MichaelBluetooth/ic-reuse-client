@@ -73,4 +73,17 @@ describe('AuthService', () => {
       expect(mockRouter.navigate).toHaveBeenCalledWith(['']);
     });
   });
+
+  describe('Getting the access token', () => {
+    it('returns the access token', () => {
+      const accessToken = 'test_token';
+      localStorage.setItem(service.AUTH_DETAILS_KEY, JSON.stringify({accessToken}));
+      expect(service.getAccessToken()).toBe(accessToken);
+    });
+
+    it('returns null when there is no access token', () => {
+      localStorage.removeItem(service.AUTH_DETAILS_KEY);
+      expect(service.getAccessToken()).toBe(null);
+    });
+  });
 });
