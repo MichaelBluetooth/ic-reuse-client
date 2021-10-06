@@ -12,7 +12,8 @@
      -->
     <ng-container *ngIf="username$ | async as username; else loginBtn">
       <div>
-        <span class="navbar-text me-2">{{ username }}</span>
+        <a class="btn btn-outline-primary me-2" [routerLink]="['listings', 'add']">Add Listing</a>
+        <a class="btn btn-outline-primary me-2">{{ username }}</a>
         <a class="btn btn-outline-primary" (click)="logout()">Logout</a>
       </div>
     </ng-container>

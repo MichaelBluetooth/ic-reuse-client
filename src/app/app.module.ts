@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccessTokenInterceptor } from './services/access-token-interceptor/access-token.interceptor';
 import { initializeAppFactory } from './services/app-initializer/app-initializer';
 import { AuthService } from './services/auth/auth.service';
+import { AddListingComponent } from './add-listing/add-listing.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AuthService } from './services/auth/auth.service';
     ListingComponent,
     ToListingImagePipe,
     PricePipe,
-    LoginComponent
+    LoginComponent,
+    AddListingComponent
   ],
   imports: [
     BrowserModule,
