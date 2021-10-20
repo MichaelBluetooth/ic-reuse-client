@@ -10,10 +10,11 @@
          When "username" is null, instead of rendering anything inside this "<ng-container>"
          element, we render the element labelled as "loginBtn" (defined elsewhere)
      -->
-    <ng-container *ngIf="username$ | async as username; else loginBtn">
+    <ng-container *ngIf="loginDetails$ | async as loginDetails; else loginBtn">
       <div>
         <a class="btn btn-outline-primary me-2" [routerLink]="['listings', 'add']">Add Listing</a>
-        <a class="btn btn-outline-primary me-2">{{ username }}</a>
+        <a class="btn btn-outline-primary me-2">{{ loginDetails.username }}</a>
+        <a class="btn btn-outline-primary me-2" *ngIf="loginDetails.isAdmin" [routerLink]="['/users']">Users</a>
         <a class="btn btn-outline-primary" (click)="logout()">Logout</a>
       </div>
     </ng-container>

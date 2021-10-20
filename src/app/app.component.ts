@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { LoginDetails } from './models/login-details';
 import { AuthService } from './services/auth/auth.service';
 
 @Component({
@@ -15,9 +16,7 @@ export class AppComponent {
   //
   //Note that this is actually just another observable
   //  that's used in the template
-  username$: Observable<string | null> = this.auth.loginDetails$.pipe(
-    map((details) => (details ? details.username : null))
-  );
+  loginDetails$: Observable<LoginDetails | null> = this.auth.loginDetails$
 
   constructor(private auth: AuthService, private router: Router) {}
 

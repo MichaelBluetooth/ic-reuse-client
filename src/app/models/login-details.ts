@@ -3,4 +3,5 @@ export interface LoginDetails {
     expires: number;
     accessToken: string;
     refreshToken: string;
+    isAdmin: boolean;
 }

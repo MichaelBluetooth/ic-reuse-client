@@ -63,6 +63,7 @@ export class AuthService {
       expires: decoded.exp, //The expiration date of the token will be
       accessToken: resp.accessToken, //The access token needed to make requests against protected resources
       refreshToken: resp.refreshToken, //The token used to obtain a new access token when it expires
+      isAdmin: decoded.Role === 'admin' //whether the current user is an administrator
     };
 
     //Persist the detail in local storage, which allows other tabs to access it

@@ -14,6 +14,7 @@ import { AccessTokenInterceptor } from './services/access-token-interceptor/acce
 import { initializeAppFactory } from './services/app-initializer/app-initializer';
 import { AuthService } from './services/auth/auth.service';
 import { AddListingComponent } from './components/add-listing/add-listing.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AddListingComponent } from './components/add-listing/add-listing.compon
     ToListingImagePipe,
     PricePipe,
     LoginComponent,
-    AddListingComponent
+    AddListingComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,

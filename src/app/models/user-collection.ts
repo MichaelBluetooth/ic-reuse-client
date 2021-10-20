@@ -1,7 +1,7 @@
-import { Listing } from "./listing";
+import { User } from "./user";
 
-export interface ListingCollection {
-  results: Listing[];
+export interface UserCollection {
+  results: User[];
   currentPage: number;
   pageCount: number;
   pageSize: number;
