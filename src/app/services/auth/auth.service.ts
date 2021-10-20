@@ -35,23 +35,8 @@ export class AuthService {
   }
 
   logout(): void {
-    //Tell the server we're logging out and navigate to the homepage
-    this.http.post(environment.baseUrl + 'users/logout', {}).subscribe(
-      () => {
-        //on success, navigate to home page
-        this.router.navigate(['']);
-      },
-      () => {
-        //on error, also navigate to home page
-        //we've already deleted the token, so there's nothing else for us to do
-        this.router.navigate(['']);
-      },
-      () => {
-        //Regardless of whether the API failed or succeeed, clear local storage and alert anyone listening that we're logged out
-        localStorage.removeItem(this.AUTH_DETAILS_KEY);
-        this.loginDetails$.next(null);
-      }
-    );
+    localStorage.removeItem(this.AUTH_DETAILS_KEY);
+    this.loginDetails$.next(null);
   }
 
   refreshAccessToken(): Observable<string> {
