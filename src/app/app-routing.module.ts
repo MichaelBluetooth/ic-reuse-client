@@ -4,6 +4,7 @@ import { AddListingComponent } from './add-listing/add-listing.component';
 import { ListingComponent } from './components/listing/listing.component';
 import { ListingsComponent } from './components/listings/listings.component';
 import { LoginComponent } from './components/login/login.component';
+import { LoggedInGuard } from './guards/logged-in.guard';
 
 const routes: Routes = [
   {
@@ -13,6 +14,9 @@ const routes: Routes = [
   {
     path: 'listings/add',
     component: AddListingComponent,
+    canActivate: [
+      LoggedInGuard
+    ]
   },
   {
     path: 'listings/:id',
