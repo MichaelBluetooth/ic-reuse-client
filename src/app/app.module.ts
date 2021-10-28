@@ -15,6 +15,8 @@ import { initializeAppFactory } from './services/app-initializer/app-initializer
 import { AuthService } from './services/auth/auth.service';
 import { AddListingComponent } from './components/add-listing/add-listing.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
+import { AlertComponent } from './components/alert/alert.component';
+import { ErrorInterceptor } from './services/error-interceptor/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { UsersListComponent } from './components/users-list/users-list.component
     PricePipe,
     LoginComponent,
     AddListingComponent,
-    UsersListComponent
+    UsersListComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,11 @@ import { UsersListComponent } from './components/users-list/users-list.component
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AccessTokenInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true,
     },
     {

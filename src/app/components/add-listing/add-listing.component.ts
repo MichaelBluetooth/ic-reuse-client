@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddListing } from 'src/app/models/add-listing';
 import { ListingDetails } from 'src/app/models/listing-details';
+import { AlertService } from 'src/app/services/alert/alert.service';
 import { ListingsService } from 'src/app/services/listings.service';
 
 @Component({
@@ -23,7 +24,8 @@ export class AddListingComponent implements OnInit {
 
   constructor(
     private listingService: ListingsService,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService
   ) {}
 
   ngOnInit(): void {}
@@ -45,6 +47,7 @@ export class AddListingComponent implements OnInit {
       this.listingService
         .addListing(addListing)
         .subscribe((created: ListingDetails) => {
+          this.alertService.alert('Successfully created new listing', 'primary');
           this.router.navigate(['listings', created.id]);
         });
     }

@@ -1,0 +1,8 @@
+<ng-container *ngFor="let alert of alerts; let idx = index">
+  <div class="top-right">
+    <div [class]="'alert alert-dismissible alert-' + alert.type" role="alert">
+      {{ alert.text }}
+      <button type="button" class="btn-close" (click)="remove(idx)"></button>
+    </div>    
+  </div>
+</ng-container>
