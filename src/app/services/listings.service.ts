@@ -15,7 +15,7 @@ export class ListingsService {
 
   getListings(query?: string): Observable<ListingCollection> {
     let url = `${environment.baseUrl}listings`;
-    if(query){
+    if (query) {
       url += `?q=${query}`;
     }
     return this.http.get(url).pipe(

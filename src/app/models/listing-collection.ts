@@ -7,4 +7,5 @@ export interface ListingCollection {
   pageSize: number;
   firstResult: number;
   lastResult: number;
+  rowCount: number;
 }

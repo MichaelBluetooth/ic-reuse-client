@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ListingCollection } from 'src/app/models/listing-collection';
-import { ListingsService } from 'src/app/services/listings.service';
 
 @Component({
   selector: 'app-listings',
@@ -11,21 +11,18 @@ export class ListingsComponent implements OnInit {
   listings: ListingCollection;
   queryTerm: string = '';
 
-  constructor(private listingService: ListingsService) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
-    this.listingService
-      .getListings()
-      .subscribe((listings: ListingCollection) => {
-        this.listings = listings;
-      });
+    this.route.queryParams.subscribe(queryString => {
+      this.queryTerm = queryString.q;
+    });
+    this.route.data.subscribe((d) => {
+      this.listings = d.listings;
+    });
   }
 
-  search(){
-    this.listingService
-      .getListings(this.queryTerm)
-      .subscribe((listings: ListingCollection) => {
-        this.listings = listings;
-      });
+  search() {
+    this.router.navigate([''], { queryParams: { q: this.queryTerm } });
   }
 }

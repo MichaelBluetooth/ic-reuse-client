@@ -7,11 +7,16 @@ import { LoginComponent } from './components/login/login.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { IsAdminGuard } from './guards/is-admin.guard';
 import { LoggedInGuard } from './guards/logged-in.guard';
+import { ListingsResolver } from './resolvers/listings/listings.resolver';
 
 const routes: Routes = [
   {
     path: '',
     component: ListingsComponent,
+    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+    resolve: {
+      listings: ListingsResolver
+    }
   },
   {
     path: 'listings/add',
