@@ -9,12 +9,21 @@ import { ListingsService } from 'src/app/services/listings.service';
 })
 export class ListingsComponent implements OnInit {
   listings: ListingCollection;
+  queryTerm: string = '';
 
   constructor(private listingService: ListingsService) {}
 
   ngOnInit() {
     this.listingService
       .getListings()
+      .subscribe((listings: ListingCollection) => {
+        this.listings = listings;
+      });
+  }
+
+  search(){
+    this.listingService
+      .getListings(this.queryTerm)
       .subscribe((listings: ListingCollection) => {
         this.listings = listings;
       });

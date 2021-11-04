@@ -13,8 +13,12 @@ import { ListingDetails } from '../models/listing-details';
 export class ListingsService {
   constructor(private http: HttpClient) {}
 
-  getListings(): Observable<ListingCollection> {
-    return this.http.get(`${environment.baseUrl}listings`).pipe(
+  getListings(query?: string): Observable<ListingCollection> {
+    let url = `${environment.baseUrl}listings`;
+    if(query){
+      url += `?q=${query}`;
+    }
+    return this.http.get(url).pipe(
       map((resp: any) => {
         return resp as ListingCollection;
       })
