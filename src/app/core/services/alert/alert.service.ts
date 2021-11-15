@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { AlertMsg } from 'src/app/models/alert-msg';
+import { AlertMsg } from '../../models/alert-msg';
 
 @Injectable({
   providedIn: 'root',

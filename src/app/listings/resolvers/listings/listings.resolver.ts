@@ -6,8 +6,8 @@ import {
   ActivatedRouteSnapshot,
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { ListingCollection } from 'src/app/models/listing-collection';
-import { ListingsService } from 'src/app/services/listings.service';
+import { ListingCollection } from 'src/app/core/models/listing-collection';
+import { ListingsService } from 'src/app/core/services/listings.service';
 
 @Injectable({
   providedIn: 'root',

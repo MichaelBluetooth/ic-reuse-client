@@ -14,7 +14,7 @@
       <div>
         <a class="btn btn-outline-primary me-2" [routerLink]="['listings', 'add']">Add Listing</a>
         <a class="btn btn-outline-primary me-2">{{ loginDetails.username }}</a>
-        <a class="btn btn-outline-primary me-2" *ngIf="loginDetails.isAdmin" [routerLink]="['/users']">Users</a>
+        <a class="btn btn-outline-primary me-2" *ngIf="loginDetails.isAdmin" [routerLink]="['/admin', 'users']">Users</a>
         <a class="btn btn-outline-primary" (click)="logout()">Logout</a>
       </div>
     </ng-container>

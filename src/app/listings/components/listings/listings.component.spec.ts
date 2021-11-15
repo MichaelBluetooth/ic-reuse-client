@@ -2,13 +2,12 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockLocationStrategy } from '@angular/common/testing';
-import { of } from 'rxjs';
-import { ListingCollection } from 'src/app/models/listing-collection';
-import { PricePipe } from 'src/app/pipes/price/price.pipe';
-import { ListingsService } from 'src/app/services/listings.service';
-
-import { ListingsComponent } from './listings.component';
 import { LocationStrategy } from '@angular/common';
+import { of } from 'rxjs';
+import { ListingCollection } from 'src/app/core/models/listing-collection';
+import { PricePipe } from 'src/app/core/pipes/price/price.pipe';
+import { ListingsComponent } from './listings.component';
+import { ListingsService } from 'src/app/core/services/listings.service';
 
 describe('ListingsComponent', () => {
   let component: ListingsComponent;
@@ -36,6 +35,7 @@ describe('ListingsComponent', () => {
     lastResult: 1,
     pageCount: 1,
     pageSize: 1,
+    rowCount: 2,
   };
 
   beforeEach(async () => {

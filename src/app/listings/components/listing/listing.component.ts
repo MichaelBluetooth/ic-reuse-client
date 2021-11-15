@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ListingDetails } from 'src/app/models/listing-details';
-import { ListingsService } from 'src/app/services/listings.service';
+import { ListingDetails } from 'src/app/core/models/listing-details';
+import { ListingsService } from 'src/app/core/services/listings.service';
 
 @Component({
   selector: 'app-listing',

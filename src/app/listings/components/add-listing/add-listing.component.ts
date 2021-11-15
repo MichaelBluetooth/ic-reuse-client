@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AddListing } from 'src/app/models/add-listing';
-import { ListingDetails } from 'src/app/models/listing-details';
-import { AlertService } from 'src/app/services/alert/alert.service';
-import { ListingsService } from 'src/app/services/listings.service';
+import { AddListing } from 'src/app/core/models/add-listing';
+import { ListingDetails } from 'src/app/core/models/listing-details';
+import { AlertService } from 'src/app/core/services/alert/alert.service';
+import { ListingsService } from 'src/app/core/services/listings.service';
 
 @Component({
   selector: 'app-add-listing',

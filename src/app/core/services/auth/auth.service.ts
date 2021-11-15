@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { LoginDetails } from 'src/app/models/login-details';
-import { LoginResponse } from 'src/app/models/login-response';
 import { environment } from 'src/environments/environment';
+import { LoginDetails } from '../../models/login-details';
+import { LoginResponse } from '../../models/login-response';
 
 @Injectable({
   providedIn: 'root',

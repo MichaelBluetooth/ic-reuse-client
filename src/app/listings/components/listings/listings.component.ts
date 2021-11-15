@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ListingCollection } from 'src/app/models/listing-collection';
+import { ListingCollection } from 'src/app/core/models/listing-collection';
 
 @Component({
   selector: 'app-listings',

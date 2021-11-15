@@ -2,10 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
-import { ListingDetails } from 'src/app/models/listing-details';
-import { PricePipe } from 'src/app/pipes/price/price.pipe';
-import { ToListingImagePipe } from 'src/app/pipes/to-listing-image/to-listing-image.pipe';
-import { ListingsService } from 'src/app/services/listings.service';
+import { ListingDetails } from 'src/app/core/models/listing-details';
+import { PricePipe } from 'src/app/core/pipes/price/price.pipe';
+import { ToListingImagePipe } from 'src/app/core/pipes/to-listing-image/to-listing-image.pipe';
+import { ListingsService } from 'src/app/core/services/listings.service';
 
 import { ListingComponent } from './listing.component';
 
