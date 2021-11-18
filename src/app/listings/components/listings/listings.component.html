@@ -6,6 +6,7 @@
     [(ngModel)]="queryTerm"
     [ngModelOptions]="{ standalone: true }"
     appDoneTyping
+    [doneTypingDelayMS]="500"
     (doneTyping)="search()"
   />
   <button class="btn btn-outline-secondary" type="submit">Search</button>
