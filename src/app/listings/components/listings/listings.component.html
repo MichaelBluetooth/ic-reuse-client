@@ -1,5 +1,14 @@
 <form class="input-group mb-3" (submit)="search()">
-  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="queryTerm" [ngModelOptions]="{standalone: true}">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Search..."
+    [(ngModel)]="queryTerm"
+    [ngModelOptions]="{ standalone: true }"
+    appDoneTyping
+    [doneTypingDelayMS]="500"
+    (doneTyping)="search()"
+  />
   <button class="btn btn-outline-secondary" type="submit">Search</button>
 </form>
 
