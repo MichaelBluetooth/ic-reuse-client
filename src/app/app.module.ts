@@ -5,37 +5,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListingsComponent } from './components/listings/listings.component';
-import { ListingComponent } from './components/listing/listing.component';
-import { ToListingImagePipe } from './pipes/to-listing-image/to-listing-image.pipe';
-import { PricePipe } from './pipes/price/price.pipe';
-import { LoginComponent } from './components/login/login.component';
-import { AccessTokenInterceptor } from './services/access-token-interceptor/access-token.interceptor';
-import { initializeAppFactory } from './services/app-initializer/app-initializer';
-import { AuthService } from './services/auth/auth.service';
-import { AddListingComponent } from './components/add-listing/add-listing.component';
-import { UsersListComponent } from './components/users-list/users-list.component';
-import { AlertComponent } from './components/alert/alert.component';
-import { ErrorInterceptor } from './services/error-interceptor/error.interceptor';
+import { AccessTokenInterceptor } from './core/services/access-token-interceptor/access-token.interceptor';
+import { CoreModule } from './core/core.module';
+import { initializeAppFactory } from './core/services/app-initializer/app-initializer';
+import { AuthService } from './core/services/auth/auth.service';
+import { ErrorInterceptor } from './core/services/error-interceptor/error.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListingsComponent,
-    ListingComponent,
-    ToListingImagePipe,
-    PricePipe,
-    LoginComponent,
-    AddListingComponent,
-    UsersListComponent,
-    AlertComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,    
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule
   ],
   providers: [
     {
