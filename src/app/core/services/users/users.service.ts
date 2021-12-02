@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UserCollection } from '../../models/user-collection';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   getUsers(): Observable<UserCollection> {
     return this.http.get<UserCollection>(environment.baseUrl + 'users');
@@ -20,5 +21,6 @@ export class UsersService {
         new_username,
         new_password,
       })
+      this.router.navigate(['/login']);
   }
 }

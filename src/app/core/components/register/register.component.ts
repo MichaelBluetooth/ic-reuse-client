@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
         this.registerForm.value.new_username,
         this.registerForm.value.new_password
       )
+      alert("Successfully Registerd")
     }else{
       alert("Passwords dont match")
     }
